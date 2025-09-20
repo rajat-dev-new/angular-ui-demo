@@ -1,67 +1,86 @@
-/* Improve label and input visibility */
-mat-form-field {
-	width: 100%;
-	margin-bottom: 24px;
+
+.side-by-side-container {
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  background: linear-gradient(135deg, #e3f2fd 0%, #fce4ec 100%);
+  padding: 40px 0;
+  gap: 32px;
 }
 
-input[matInput] {
-	font-size: 1.1rem;
-	padding: 10px;
-	background: #f5f5f5;
-	border-radius: 6px;
+
+.form-section {
+  width: 320px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 1.5px 3px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 24px 16px;
+  background: #fff;
+  margin-bottom: 0;
 }
 
-mat-label {
-	font-size: 1.1rem;
-	color: #1976d2;
-	font-weight: 500;
-	margin-bottom: 8px;
-}
-/* Center the form card vertically and horizontally */
-.form-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	background: linear-gradient(135deg, #e3f2fd 0%, #fce4ec 100%);
+.input-field {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-mat-card {
-	box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 1.5px 3px rgba(0,0,0,0.08);
-	border-radius: 16px;
-	padding: 32px 24px;
-	background: #fff;
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
 }
 
-mat-card-title {
-	font-size: 1.6rem;
-	font-weight: 600;
-	color: #1976d2;
-	margin-bottom: 16px;
-	text-align: center;
+
+.table-section {
+  width: 480px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 1.5px 3px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 24px 16px;
+  background: #fff;
 }
 
-mat-form-field {
-	margin-bottom: 16px;
-}
-
-button[mat-raised-button] {
-	min-width: 100px;
-	font-weight: 500;
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
 }
 
 table.mat-table {
-	margin-top: 16px;
-	background: #fafafa;
-	border-radius: 8px;
-	overflow: hidden;
+  width: 100%;
+  border-radius: 8px;
+  background: #fafafa;
 }
 
-th.mat-header-cell, td.mat-cell {
-	padding: 8px 12px;
+th.mat-header-cell {
+  background: #1976d2;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 2px solid #1565c0;
 }
 
-h3 {
-	color: #1976d2;
-	margin-bottom: 8px;
+td.mat-cell {
+  font-size: 1rem;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+tr.mat-row:hover td.mat-cell {
+  background: #e3f2fd;
+}
+
+
+@media (max-width: 900px) {
+  .side-by-side-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .form-section, .table-section {
+    width: 98vw;
+    max-width: 98vw;
+    padding: 16px 8px;
+  }
 }

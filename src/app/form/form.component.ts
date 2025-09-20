@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { FormService, FormEntry } from './form.service';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -28,30 +28,28 @@ import { MatTableModule } from '@angular/material/table';
   styleUrl: './form.component.css'
 })
 export class FormComponent {
-  formData = { name: '' };
-  response: any;
-  responseTableData: any[] | null = null;
-  displayedColumns: string[] = ['id', 'title', 'body'];
+  formData: FormEntry = { name: '', email: '', message: '' };
+  response: FormEntry | null = null;
+  responseTableData: FormEntry[] | null = null;
+  displayedColumns: string[] = ['id', 'name', 'email', 'message'];
 
-  constructor(private http: HttpClient) {}
+  constructor(private formService: FormService) {}
 
   onSubmit() {
-    this.http.post('https://jsonplaceholder.typicode.com/posts', this.formData)
-      .subscribe(res => {
-        this.response = res;
-        this.responseTableData = null;
-      });
+    this.formService.submitForm(this.formData).subscribe(res => {
+      this.response = res;
+      this.formData = { name: '', email: '', message: '' };
+      this.loadTableData();
+    });
   }
 
-  fetchData() {
-    this.http.get('https://jsonplaceholder.typicode.com/posts')
-      .subscribe((res: any) => {
-        this.response = res;
-        if (Array.isArray(res)) {
-          this.responseTableData = res.slice(0, 5); // Show first 5 for demo
-        } else {
-          this.responseTableData = null;
-        }
-      });
+  loadTableData() {
+    this.formService.getSubmissions().subscribe((res: FormEntry[]) => {
+      this.responseTableData = res;
+    });
+  }
+
+  ngOnInit() {
+    this.loadTableData();
   }
 }
