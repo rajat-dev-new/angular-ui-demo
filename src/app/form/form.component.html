@@ -1,0 +1,40 @@
+<div class="form-container">
+	<mat-card style="width: 400px;">
+		<mat-card-title>Submit Name</mat-card-title>
+		<form (ngSubmit)="onSubmit()" #formRef="ngForm">
+					<div style="margin-bottom: 8px;">
+						<label for="name" style="font-size: 1.1rem; color: #1976d2; font-weight: 500;">Name</label>
+					</div>
+					<mat-form-field appearance="fill" style="width: 100%;">
+						<input matInput type="text" id="name" name="name" [(ngModel)]="formData.name" required />
+					</mat-form-field>
+			<div style="display: flex; justify-content: space-between; margin-top: 16px;">
+				<button mat-raised-button color="primary" type="submit">Submit</button>
+				<button mat-raised-button color="accent" type="button" (click)="fetchData()">Get Data</button>
+			</div>
+		</form>
+		<div *ngIf="response && responseTableData" style="margin-top: 24px;">
+			<h3>Fetched Data</h3>
+			<table mat-table [dataSource]="responseTableData" class="mat-elevation-z8" style="width: 100%;">
+				<ng-container matColumnDef="id">
+					<th mat-header-cell *matHeaderCellDef>ID</th>
+					<td mat-cell *matCellDef="let element">{{ element.id }}</td>
+				</ng-container>
+				<ng-container matColumnDef="title">
+					<th mat-header-cell *matHeaderCellDef>Title</th>
+					<td mat-cell *matCellDef="let element">{{ element.title }}</td>
+				</ng-container>
+				<ng-container matColumnDef="body">
+					<th mat-header-cell *matHeaderCellDef>Body</th>
+					<td mat-cell *matCellDef="let element">{{ element.body }}</td>
+				</ng-container>
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+			</table>
+		</div>
+		<div *ngIf="response && !responseTableData" style="margin-top: 24px;">
+			<h3>Response</h3>
+			<pre>{{ response | json }}</pre>
+		</div>
+	</mat-card>
+</div>

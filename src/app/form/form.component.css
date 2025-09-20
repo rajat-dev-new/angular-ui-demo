@@ -1,0 +1,67 @@
+/* Improve label and input visibility */
+mat-form-field {
+	width: 100%;
+	margin-bottom: 24px;
+}
+
+input[matInput] {
+	font-size: 1.1rem;
+	padding: 10px;
+	background: #f5f5f5;
+	border-radius: 6px;
+}
+
+mat-label {
+	font-size: 1.1rem;
+	color: #1976d2;
+	font-weight: 500;
+	margin-bottom: 8px;
+}
+/* Center the form card vertically and horizontally */
+.form-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: linear-gradient(135deg, #e3f2fd 0%, #fce4ec 100%);
+}
+
+mat-card {
+	box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 1.5px 3px rgba(0,0,0,0.08);
+	border-radius: 16px;
+	padding: 32px 24px;
+	background: #fff;
+}
+
+mat-card-title {
+	font-size: 1.6rem;
+	font-weight: 600;
+	color: #1976d2;
+	margin-bottom: 16px;
+	text-align: center;
+}
+
+mat-form-field {
+	margin-bottom: 16px;
+}
+
+button[mat-raised-button] {
+	min-width: 100px;
+	font-weight: 500;
+}
+
+table.mat-table {
+	margin-top: 16px;
+	background: #fafafa;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+th.mat-header-cell, td.mat-cell {
+	padding: 8px 12px;
+}
+
+h3 {
+	color: #1976d2;
+	margin-bottom: 8px;
+}
