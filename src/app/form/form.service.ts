@@ -13,7 +13,7 @@ export interface FormEntry {
   providedIn: 'root'
 })
 export class FormService {
-  private apiUrl = 'http://localhost:8000/api/form/';
+  private apiUrl = 'https://django-be-ow23.onrender.com/api/form/';
 
   constructor(private http: HttpClient) {}
 
